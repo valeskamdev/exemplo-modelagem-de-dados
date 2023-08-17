@@ -127,3 +127,18 @@ SELECT nome, descricao FROM produtos WHERE descricao LIKE '%sistema'; -- Busca t
 SELECT nome, descricao FROM produtos WHERE descricao LIKE 'versão%'; -- Busca todos os produtos que começam com a palavra versão
 SELECT nome, descricao FROM produtos WHERE descricao LIKE '%tablet%'  OR  nome LIKE '%tela%'; -- Busca todos os produtos que possuem a palavra tablet na descrição ou a palavra tela no nome
 ```
+## Operações e funções de agregação
+
+```sql
+SELECT SUM(preco) FROM produtos; -- Soma todos os preços dos produtos
+SELECT SUM(preco) AS Total FROM produtos; -- Soma todos os preços dos produtos e renomeia a coluna para Total
+
+SELECT nome AS Produto, preco AS 'Preço' FROM produtos; -- Renomeia as colunas nome e preco para Produto e Preço respectivamente  
+SELECT nome Produto, preco 'Preço' FROM produtos; -- Renomeia as colunas nome e preco para Produto e Preço respectivamente (SEM AS)
+
+SELECT AVG(preco) AS 'Média dos Preços' FROM produtos; -- Calcula a média dos preços dos produtos
+SELECT ROUND(AVG(preco), 2) AS 'Média dos Preços' FROM produtos; -- Calcula a média dos preços dos produtos e arredonda para 2 casas decimais
+
+SELECT COUNT(id) as "Quantidade de Produtos" FROM produtos; -- Conta a quantidade de produtos
+SELECT COUNT(DISTINCT fabricante_id) as "Quantidade de Fabricantes em Produtos" FROM produtos; -- Conta a quantidade de fabricantes em produtos (DISTINCT é uma cláusula/flag que elimina os valores duplicados)
+```
