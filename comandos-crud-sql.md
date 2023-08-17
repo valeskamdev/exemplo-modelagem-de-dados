@@ -118,3 +118,12 @@ SELECT * FROM produtos ORDER BY nome; -- Ordena os registros em ordem alfabétic
 SELECT * FROM produtos ORDER BY preco; ; -- Ordena os registros em ordem crescente de preço
 SELECT * FROM produtos ORDER BY preco DESC; -- Ordena os registros em ordem decrescente de preço 
 SELECT * FROM produtos WHERE quantidade = 20 ORDER BY nome; -- Ordena os registros que possuem quantidade igual a 20 em ordem alfabética
+```
+
+## Busca de dados
+
+```sql
+SELECT nome, descricao FROM produtos WHERE descricao LIKE '%sistema'; -- Busca todos os produtos que terminam com a palavra sistema
+SELECT nome, descricao FROM produtos WHERE descricao LIKE 'versão%'; -- Busca todos os produtos que começam com a palavra versão
+SELECT nome, descricao FROM produtos WHERE descricao LIKE '%tablet%'  OR  nome LIKE '%tela%'; -- Busca todos os produtos que possuem a palavra tablet na descrição ou a palavra tela no nome
+```
