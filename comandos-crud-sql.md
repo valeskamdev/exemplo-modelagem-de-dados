@@ -99,3 +99,22 @@ UPDATE produtos SET preco = 6549.74 WHERE id = 4;
 -- Altere a quantidade dos produtos da Apple e da Samsung para 20
 UPDATE produtos SET quantidade = 20 WHERE fabricante_id IN(3, 5);
 ```	
+## DELETE
+
+### DELETE
+
+#### FABRICANTES
+
+```sql
+DELETE FROM fabricantes WHERE id = 1;
+DELETE FROM fabricantes WHERE id = 4;
+DELETE FROM fabricantes WHERE id = 3;   
+```
+
+## SELECT: outras formas de uso
+
+```sql
+SELECT * FROM produtos ORDER BY nome; -- Ordena os registros em ordem alfabética
+SELECT * FROM produtos ORDER BY preco; ; -- Ordena os registros em ordem crescente de preço
+SELECT * FROM produtos ORDER BY preco DESC; -- Ordena os registros em ordem decrescente de preço 
+SELECT * FROM produtos WHERE quantidade = 20 ORDER BY nome; -- Ordena os registros que possuem quantidade igual a 20 em ordem alfabética
