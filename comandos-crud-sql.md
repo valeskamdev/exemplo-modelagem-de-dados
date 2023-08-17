@@ -142,3 +142,14 @@ SELECT ROUND(AVG(preco), 2) AS 'Média dos Preços' FROM produtos; -- Calcula a 
 SELECT COUNT(id) as "Quantidade de Produtos" FROM produtos; -- Conta a quantidade de produtos
 SELECT COUNT(DISTINCT fabricante_id) as "Quantidade de Fabricantes em Produtos" FROM produtos; -- Conta a quantidade de fabricantes em produtos (DISTINCT é uma cláusula/flag que elimina os valores duplicados)
 ```
+
+## Operadores matemáticos
+
+```sql
+SELECT nome, preco, quantidade, (preco * quantidade) AS 'Total' FROM produtos; -- Calcula o total de cada produto
+```
+
+## Segmentação/Agrupamento de dados
+
+```sql
+SELECT fabricante_id, SUM(preco) AS Total FROM produtos GROUP BY fabricante_id; -- Agrupa os produtos por fabricante e soma os preços de cada um
