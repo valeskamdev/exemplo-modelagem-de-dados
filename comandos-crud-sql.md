@@ -56,9 +56,28 @@ SELECT nome, descricao FROM produtos WHERE fabricante_id = 3;
 ```
 ##### OPERADORES LÓGICOS: AND, OR, NOT
 
+###### AND
+
 ```sql
 SELECT nome, preco FROM produtos WHERE preco >= 2000 AND preco <= 6000;
 
 --A query abaixo não retorna registros
 -- já que as condições não são foram totalmente atendidas
 SELECT nome, preco FROM produtos WHERE preco > 5000 AND preco <= 6000;
+```
+###### OR
+    
+```sql
+SELECT nome, preco FROM produtos WHERE preco > 5000 OR preco <= 3000;
+
+-- Exiba nome e proço somente dos produtos da Apple e da Samsung
+SELECT nome, preco FROM produtos WHERE fabricante_id = 3 OR fabricante_id = 5;
+SELECT nome, preco FROM produtos WHERE fabricante_id IN(3, 5); -- IN é uma abreviação para OR
+SELECT nome, preco FROM produtos WHERE fabricante_id NOT IN(3, 5); -- NOT IN serve para negar o IN 
+```
+###### NOT
+
+```sql
+SELECT nome, descricao, preco FROM produtos WHERE NOT fabricante_id = 8;
+SELECT nome, descricao, preco FROM produtos WHERE fabricante_id != 8; -- != é uma abreviação para NOT
+```
