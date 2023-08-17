@@ -32,4 +32,7 @@ VALUES ('Tablet Android', 'Tablet com a versão 14 do Android', 1500.99, 5, 5);
 
 INSERT INTO produtos (nome, descricao, preco, quantidade, fabricante_id)
 VALUES ('Geladeira', 'Geladeira Frost Free', 5000, 12, 6), ('iPhone 18 Pro Max', 'Diversas cores', 12666, 3, 3), ('iPad Mini', 'Com tela de 7 polegadas', 4999.01, 5, 3);
+
+INSERT INTO produtos (nome, descricao, preco, quantidade, fabricante_id)
+VALUES ('Xbox Series S', 'Velocidade e desempenho de última geração', 1977, 5, 8), ('Notebook Motion', 'Intel Dual Core 4GB de RAM, 128GB SSD e Tela 14,1 polegadas', 1213.65, 8, 7);
 ```
