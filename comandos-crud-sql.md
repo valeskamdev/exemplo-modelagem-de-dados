@@ -81,3 +81,21 @@ SELECT nome, preco FROM produtos WHERE fabricante_id NOT IN(3, 5); -- NOT IN ser
 SELECT nome, descricao, preco FROM produtos WHERE NOT fabricante_id = 8;
 SELECT nome, descricao, preco FROM produtos WHERE fabricante_id != 8; -- != é uma abreviação para NOT
 ```
+## UPDATE
+
+### UPDATE
+
+#### FABRICANTES
+
+```sql
+UPDATE fabricantes SET nome = 'Asus do Brasil' WHERE id = 1;
+```
+
+#### PRODUTOS
+
+```sql
+UPDATE produtos SET preco = 6549.74 WHERE id = 4;   
+
+-- Altere a quantidade dos produtos da Apple e da Samsung para 20
+UPDATE produtos SET quantidade = 20 WHERE fabricante_id IN(3, 5);
+```	
