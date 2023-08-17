@@ -36,3 +36,29 @@ VALUES ('Geladeira', 'Geladeira Frost Free', 5000, 12, 6), ('iPhone 18 Pro Max',
 INSERT INTO produtos (nome, descricao, preco, quantidade, fabricante_id)
 VALUES ('Xbox Series S', 'Velocidade e desempenho de última geração', 1977, 5, 8), ('Notebook Motion', 'Intel Dual Core 4GB de RAM, 128GB SSD e Tela 14,1 polegadas', 1213.65, 8, 7);
 ```
+
+## READ
+
+### SELECT
+
+#### PRODUTOS
+
+```sql
+SELECT * FROM produtos;
+
+SELECT nome, preco FROM produtos;
+SELECT preco, nome FROM produtos;
+
+SELECT nome, preco, quantidade FROM produtos WHERE preco < 5000;
+
+-- Mostre nome e descrição somente dos produtos da Apple
+SELECT nome, descricao FROM produtos WHERE fabricante_id = 3;
+```
+##### OPERADORES LÓGICOS: AND, OR, NOT
+
+```sql
+SELECT nome, preco FROM produtos WHERE preco >= 2000 AND preco <= 6000;
+
+--A query abaixo não retorna registros
+-- já que as condições não são foram totalmente atendidas
+SELECT nome, preco FROM produtos WHERE preco > 5000 AND preco <= 6000;
