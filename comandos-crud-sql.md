@@ -154,12 +154,14 @@ SELECT nome, preco, quantidade, (preco * quantidade) AS 'Total' FROM produtos; -
 ```sql
 SELECT fabricante_id, SUM(preco) AS Total FROM produtos GROUP BY fabricante_id; -- Agrupa os produtos por fabricante e soma os preços de cada um 
 ```
-## Consultas (Queries) em duas ou mais tabelas relacionadas (JOIN)
+## Consultas (Queries) em duas ou mais tabelas relacionadas
 
 ### Retorna todos os produtos e seus respectivos fabricantes (nome do produto e nome do fabricante)
 
 
 ```sql
+--  JOIN -> faz a junção de duas ou mais tabelas
+
 -- SELECT tabela1.coluna, tabela2.coluna
 SELECT produtos.nome AS Produto, fabricantes.nome AS Fabricante
 --  FROM tabela1 INNER JOIN tabela2
@@ -178,3 +180,26 @@ SELECT produtos.nome AS Produto, fabricantes.nome AS Fabricante
 
  ```sql
  SELECT fabricantes.nome AS fabricante, SUM(produtos.preco) AS total, COUNT(produtos.fabricante_id) AS 'Quantidade de Produtos' FROM produtos INNER JOIN fabricantes ON produtos.fabricante_id = fabricantes.id GROUP BY fabricante ORDER BY total;
+```
+
+### Trazer a quantidade de produtos de cada fabricante
+
+```sql
+SELECT fabricantes.nome AS fabricante, COUNT(produtos.fabricante_id) AS qtd FROM produtos INNER JOIN fabricantes ON produtos.fabricante_id = fabricantes.id GROUP BY fabricante;
+```
+### Trazer a quantidade de produtos de cada fabricante e a soma da quantidade/estoque destes produtos, SOMENTE DOS FABRICANETES QUE POSSUEM PRODUTOS
+
+```sql
+SELECT fabricantes.nome AS fab, COUNT(produtos.fabricante_id) AS qtd, SUM(produtos.quantidade) AS estoq FROM produtos INNER JOIN fabricantes ON produtos.fabricante_id = fabricantes.id GROUP BY fab;
+```
+
+### Trazer a quantidade de produtos de cada fabricante e a soma da quantidade/estoque destes produtos, MESMO DOS FABRICANETES QUE NÃO POSSUEM PRODUTOS 
+
+```sql
+-- RIGHT JOIN -> traz todos os registros da tabela da direita, mesmo que não existam registros correspondentes na tabela da esquerda
+
+-- LEFT JOIN -> traz todos os registros da tabela da esquerda, mesmo que não existam registros correspondentes na tabela da direita
+
+SELECT fabricantes.nome AS fab, COUNT(produtos.fabricante_id) AS qtd, SUM(produtos.quantidade) AS estoq FROM produtos RIGHT JOIN fabricantes ON produtos.fabricante_id = fabricantes.id GROUP BY fab;
+```
+
