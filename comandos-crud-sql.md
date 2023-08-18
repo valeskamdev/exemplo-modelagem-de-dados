@@ -152,4 +152,29 @@ SELECT nome, preco, quantidade, (preco * quantidade) AS 'Total' FROM produtos; -
 ## Segmentação/Agrupamento de dados
 
 ```sql
-SELECT fabricante_id, SUM(preco) AS Total FROM produtos GROUP BY fabricante_id; -- Agrupa os produtos por fabricante e soma os preços de cada um
+SELECT fabricante_id, SUM(preco) AS Total FROM produtos GROUP BY fabricante_id; -- Agrupa os produtos por fabricante e soma os preços de cada um 
+```
+## Consultas (Queries) em duas ou mais tabelas relacionadas (JOIN)
+
+### Retorna todos os produtos e seus respectivos fabricantes (nome do produto e nome do fabricante)
+
+
+```sql
+-- SELECT tabela1.coluna, tabela2.coluna
+SELECT produtos.nome AS Produto, fabricantes.nome AS Fabricante
+--  FROM tabela1 INNER JOIN tabela2
+ FROM produtos INNER JOIN fabricantes
+--  ON tabela1.coluna = tabela2.coluna;
+ ON produtos.fabricante_id = fabricantes.id;
+ ```
+
+ ### Nome do produto, nome do fabricante, preco do produto e ordenado pelo nome do produto
+
+ ```sql
+ SELECT produtos.nome AS Produto, produtos.preco AS 'Preço', fabricantes.nome AS Fabricante FROM produtos INNER JOIN fabricantes ON produtos.fabricante_id = fabricantes.id ORDER BY Produto, Fabricante;
+ ```
+
+ ### Nome do fabricante, soma dos precos e quantidade de produtos
+
+ ```sql
+ SELECT fabricantes.nome AS fabricante, SUM(produtos.preco) AS total, COUNT(produtos.fabricante_id) AS 'Quantidade de Produtos' FROM produtos INNER JOIN fabricantes ON produtos.fabricante_id = fabricantes.id GROUP BY fabricante ORDER BY total;
